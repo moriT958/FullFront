@@ -98,5 +98,3 @@ Evaluation results will be saved in the `calculate_similarity/results/` director
 - CLIP similarity score
 - Code structure similarity
 - Code content similarity
-- Functional implementation completeness
-
