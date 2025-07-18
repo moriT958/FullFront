@@ -1,3 +1,6 @@
 datasets/
+
 results/
+generated_htmls/
+
 .env
