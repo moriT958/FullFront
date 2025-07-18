@@ -2,5 +2,11 @@ datasets/
 
 results/
 generated_htmls/
+pro_imgs/
+label_imgs/
+
+clip/
 
 .env
+
+.DS_Store
