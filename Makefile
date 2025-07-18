@@ -11,13 +11,15 @@ $(VENV_DIR)/bin/activate:
 install: $(VENV_DIR)/bin/activate
 	$(PIP) install -r requirements.txt
 
+# OPENAIにコード生成をさせる
 .PHONY: gen
-gen: openai_code.py
-	$(PYTHON) openai_code.py
-	# $(PYTHON) extract_html.py
+gen: generate_response/openai_code.py
+	$(PYTHON) generate_response/openai_code.py
+	$(PYTHON) extract_html.py
 
-# .PHONY: eval
-# eval: clip_score.py render_imgs.py parquet_to_img.py
-# 	$(PYTHON) parquet_to_img.py
-# 	$(PYTHON) render_imgs.py
-# 	$(PYTHON) clip_score.py
+# 生成物の評価
+.PHONY: eval
+eval: calculate_similarity/clip_score.py calculate_similarity/render_img.py load_label_img.py
+	$(PYTHON) calculate_similarity/render_img.py
+	$(PYTHON) load_label_img.py
+	$(PYTHON) calculate_similarity/clip_score.py
